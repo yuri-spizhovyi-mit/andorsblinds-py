@@ -15,6 +15,7 @@ skip_in_ci = pytest.mark.skipif(
 
 @skip_in_ci
 def test_smoke_google_to_project(page):
+    """Smoke test"""
     keyword = get_random_keyword()
     print(f"\n🔍 Searching: {keyword}")
 
