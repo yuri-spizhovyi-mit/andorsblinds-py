@@ -3,14 +3,15 @@ from utils import timegenerator
 from utils.helper import scroll_page
 
 
-
 class GoogleSearchPage:
     def __init__(self, page: Page):
         self.page = page
         self.accept_cookies_button = page.locator('button:has-text("I agree")')
         self.search_input = page.locator("textarea[name='q'], input[name='q']")
         self.not_now_button = page.locator("button:has-text('Not now')")
-        self.next_button = page.locator("span.oeN89d", has_text="Next")  # ✅ Centralized here
+        self.next_button = page.locator(
+            "span.oeN89d", has_text="Next"
+        )  # ✅ Centralized here
 
     def navigate_to_google(self):
         self.page.goto("https://www.google.com/")
