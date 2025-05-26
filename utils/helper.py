@@ -23,7 +23,7 @@ def scroll_page(
     direction: str = "down",
     min_step: int = 450,
     max_step: int = 1850,
-    delay_between_scrolls: int = 500
+    delay_between_scrolls: int = 500,
 ):
     scroll_script = """
         async ({ direction, minStep, maxStep, delayBetweenScrolls }) => {
@@ -46,15 +46,20 @@ def scroll_page(
             }
         }
     """
-    page.evaluate(scroll_script, {
-        "direction": direction,
-        "minStep": min_step,
-        "maxStep": max_step,
-        "delayBetweenScrolls": delay_between_scrolls
-    })
+    page.evaluate(
+        scroll_script,
+        {
+            "direction": direction,
+            "minStep": min_step,
+            "maxStep": max_step,
+            "delayBetweenScrolls": delay_between_scrolls,
+        },
+    )
 
 
-def find_and_click_link(page: Page, link_text: str, expected_base_url: str, google_page):
+def find_and_click_link(
+    page: Page, link_text: str, expected_base_url: str, google_page
+):
     skip_keywords = ["facebook.com", "fb.com", "Facebook"]
     page_count = 0
     max_pages = 15
@@ -73,7 +78,9 @@ def find_and_click_link(page: Page, link_text: str, expected_base_url: str, goog
             href = link.get_attribute("href") or ""
             normalized = href.replace("https://", "").replace("http://", "")
 
-            if normalized.startswith(expected_base_url) and not any(k in href for k in skip_keywords):
+            if normalized.startswith(expected_base_url) and not any(
+                k in href for k in skip_keywords
+            ):
                 print(f"Clicking valid link: {href}")
                 link.click()
                 found = True
@@ -104,7 +111,7 @@ def create_random_context(browser):
         geolocation={"latitude": location["lat"], "longitude": location["lon"]},
         permissions=["geolocation"],
         viewport=random_ua["viewport"],
-        user_agent=random_ua["userAgent"]
+        user_agent=random_ua["userAgent"],
     )
 
 
