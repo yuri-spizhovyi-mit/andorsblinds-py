@@ -2,7 +2,7 @@ import random
 
 # 🔑 Keywords for Andors Blinds SEO testing
 keywords = [
-"andors blinds",
+    "andors blinds",
     # "Custom blinds West Kelowna andors blinds",
     # "Blinds installation Kelowna andors blinds",
     # "Motorized blinds Kelowna andors blinds",
