@@ -5,8 +5,15 @@ from utils.keywords import get_random_keyword
 from utils.helper import detect_viewport, scroll_page
 from utils.navigation_utils import navigate_pages_with_scrolling
 from utils.social_media_utils import open_random_social_media
+import os
+import pytest
+
+skip_in_ci = pytest.mark.skipif(
+    os.getenv("CI") == "true", reason="Skip Google tests in CI due to CAPTCHA"
+)
 
 
+@skip_in_ci
 def test_smoke_google_to_project(page):
     keyword = get_random_keyword()
     print(f"\n🔍 Searching: {keyword}")
