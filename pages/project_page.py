@@ -22,7 +22,9 @@ class ProjectPage:
         self.from_instagram_link = page.locator('a[href="https://andorsblinds.ca/"]')
 
         # Hamburger menu
-        self.hamburger_menu_button = page.locator("//button[@aria-label='Toggle navigation menu']")
+        self.hamburger_menu_button = page.locator(
+            "//button[@aria-label='Toggle navigation menu']"
+        )
 
     # Navigation methods
     def navigate_to_home(self):
