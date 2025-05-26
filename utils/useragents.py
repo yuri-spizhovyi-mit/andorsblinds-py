@@ -43,10 +43,24 @@ ipad_viewports = [
 
 # Sample of realistic user agents
 user_agents = [
-    {"userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)...", "deviceType": "desktop"},
-    {"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5)...", "deviceType": "desktop"},
-    {"userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X)...", "deviceType": "mobile", "tabletType": "ipad"},
-    {"userAgent": "Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-T515)...", "deviceType": "tablet", "tabletType": "android"},
+    {
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)...",
+        "deviceType": "desktop",
+    },
+    {
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_5)...",
+        "deviceType": "desktop",
+    },
+    {
+        "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X)...",
+        "deviceType": "mobile",
+        "tabletType": "ipad",
+    },
+    {
+        "userAgent": "Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-T515)...",
+        "deviceType": "tablet",
+        "tabletType": "android",
+    },
     # Add more from original .ts if needed
 ]
 
@@ -62,9 +76,15 @@ def get_random_user_agent_and_viewport():
     if device_type == "desktop":
         viewport = get_random_element(desktop_viewports)
     elif device_type == "mobile":
-        viewport = get_random_element(iphone_viewports if ua.get("tabletType") != "ipad" else ipad_viewports)
+        viewport = get_random_element(
+            iphone_viewports if ua.get("tabletType") != "ipad" else ipad_viewports
+        )
     elif device_type == "tablet":
-        viewport = get_random_element(android_tablet_viewports if ua.get("tabletType") == "android" else ipad_viewports)
+        viewport = get_random_element(
+            android_tablet_viewports
+            if ua.get("tabletType") == "android"
+            else ipad_viewports
+        )
     else:
         viewport = {"width": 1280, "height": 720}  # fallback
 
